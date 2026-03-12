@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inter-Collegiate Fest Registration</title>
+
+<style>
+/* ================= ROOT ================= */
+:root {
+    --primary: #5800bd;
+    --secondary: #5800bd;
+    --success: #5800bd;
+    --danger: #c90b0b;
+    --text-dark: #23385a;
+    --text-light: #575e69;
+}
+
+/* ================= GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #40c2c2, #204779, #c07a29);
+    background-size: 300% 300%;
+    animation: bgMove 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ================= CARD ================= */
+.container {
+    width: 100%;
+    max-width: 950px;
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    color: white;
+}
+
+/* ================= HEADER ================= */
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.header h1 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.header p {
+    font-size: 15px;
+    color: #e2e8f0;
+}
+
+/* ================= FORM ================= */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 14px 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-group label {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #2202d4;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+/* ================= OPTIONS ================= */
+.options {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 14px;
+}
+
+/* ================= BUTTONS ================= */
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 12px 28px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(79,70,229,0.6);
+}
+
+.reset-btn {
+    background: var(--danger);
+    color: white;
+}
+
+.reset-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(220,38,38,0.6);
+}
+
+/* ================= SUCCESS ================= */
+.success {
+    display: none;
+    text-align: center;
+}
+
+.success h2 {
+    color: var(--success);
+    margin-bottom: 15px;
+}
+
+.result-box {
+    margin-top: 20px;
+    text-align: left;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.result-box div {
+    margin-bottom: 8px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="formSection">
+    <div class="header">
+        <h1>Inter-Collegiate Fest Registration</h1>
+        <p>Please complete the form carefully</p>
+    </div>
+
+    <form id="regForm">
+        <div class="form-grid">
+
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="name" required>
+            </div>
+
+            <div class="input-group">
+                <label>College Name</label>
+                <input type="text" id="college" required>
+            </div>
+
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Phone</label>
+                <input type="tel" id="phone" maxlength="10" required>
+            </div>
+
+            <div class="input-group">
+                <label>Date of Birth</label>
+                <input type="date" id="dob">
+            </div>
+
+            <div class="input-group">
+                <label>Select Event</label>
+                <select id="event" required>
+                    <option value="">Choose Event</option>
+                    <option>Cultural Dance</option>
+                    <option>Drama / Skit</option>
+                    <option>Solo Singing</option>
+                    <option>Quiz</option>
+                    <option>Sports</option>
+                </select>
+            </div>
+
+           
+
+            <div class="input-group full">
+                <label>Address</label>
+                <textarea id="address" rows="3"></textarea>
+            </div>
+
+        </div>
+
+        <div class="buttons">
+            <button type="submit" class="submit-btn">Register</button>
+            <button type="reset" class="reset-btn">Clear</button>
+        </div>
+    </form>
+</div>
+
+<!-- SUCCESS SECTION -->
+<div class="success" id="successSection">
+    <h2>🎉 Registration Successful!</h2>
+    <p>Your information has been submitted successfully.</p>
+    <div class="result-box" id="output"></div>
+</div>
+
+</div>
+
+<script>
+document.getElementById("regForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const gender = document.querySelector('input[name="gender"]:checked')?.value || "-";
+    const categories = Array.from(
+        document.querySelectorAll('input[type="checkbox"]:checked')
+    ).map(cb => cb.value).join(", ") || "-";
+
+    const data = {
+        "Full Name": name.value,
+        "College": college.value,
+        "Email": email.value,
+        "Phone": phone.value,
+        "Date of Birth": dob.value || "-",
+        "Gender": gender,
+        "Event": event.value,
+        "Participating In": categories,
+        "Address": address.value || "-"
+    };
+
+    let html = "";
+    for(let key in data){
+        html += `<div><strong>${key}:</strong> ${data[key]}</div>`;
+    }
+
+    document.getElementById("output").innerHTML = html;
+    document.getElementById("formSection").style.display = "none";
+    document.getElementById("successSection").style.display = "block";
+});
+</script>
+
+</body>
+</html>
